@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Cargar productos</title>
+</head>
+<body>
+    <!-- prueba -->
+    <header>
+        <nav class="nav-bar">
+            <img class="logo" src="imagenes/logo.png" alt="logo">
+            <ul class="nav-bar-items">
+                <li><a href="">Cargar productos</a></li>
+                <li><a href="">Productos</a></li>
+            </ul>
+        </nav>
+        <h1 class="titulo-pag">Supermercado alegria</h1>
+        <p class="subtitulo-pag">Tene tu stock al día</p>
+    </header>
+    <section class="pag-content">
+        <h2>Agregar productos</h2>
+        <form class="agregar-produc-form" action="" method="">
+            <label for="name">Nombre del producto:</label><br>
+            <input type="text" id="nombre" name="name"><br>
+    
+            <label for="cantidad">Cantidad:</label><br>
+            <input type="number" id="cantidad" name="cantidad"><br>
+    
+            <label for="Precio">Precio:</label><br>
+            <input type="number" id="precio" name="precio" placeholder="$"><br>
+
+            <button class="btn-cargar" type="submit" onclick="guardarProducto(event)">Cargar</button>
+        </form>
+    </section>
+    <section>
+        <table class="table table-bordered" id="table"></table>
+    </section>
+
+
+        <!-- <button class="btn btn-info" onclick="mostrarProductos()">Mostrar</button> -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
