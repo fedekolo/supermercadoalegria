@@ -20,7 +20,7 @@ function inicioSesion(e) {
             const verificacionUsuario = JSON.parse(localStorage.getItem("contenedorUsuarios"))[index].usuario;
             if (verificacionUsuario===usuario) {
                 if (JSON.parse(localStorage.getItem("contenedorUsuarios"))[index].contraseña===contraseña) {
-                location.href ="productos.html";
+                location.href ="cargar-productos.html";
                 } else {
                     error.textContent = "La contraseña ingreada es erronea";
                 }

@@ -45,7 +45,7 @@ function nuevoUsuario(e) {
         }
 
         // redirecciono la pagina con el logueo nuevo
-        location.href ="productos.html";
+        location.href = "cargar-productos.html";
     }
 
 }
