@@ -43,7 +43,6 @@ function fede() {
 }
 
 let productos = [];
-let id;
 
 function guardarProducto(e) {
     e.preventDefault();
@@ -52,6 +51,17 @@ function guardarProducto(e) {
     let cantidad = document.querySelector('#cantidad').value;
     let precio = document.querySelector('#precio').value;
 
+    let getId = localStorage.getItem('id');
+    let id;
+
+    if(getId) {
+        id = getId;
+        id++;
+        localStorage.setItem('id', id);
+    } else {
+        localStorage.setItem('id', 1);
+        id = 1;
+    }
 
     let producto = {
         id: id,
@@ -70,13 +80,11 @@ function guardarProducto(e) {
         productosExistentes.push(producto);
         localStorage.setItem('productos',JSON.stringify(productosExistentes));
         fede();
-        id++;
     } else {
         productos.push(producto);
         // [{}]
         localStorage.setItem('productos',JSON.stringify(productos));
         fede();
-        id++;
     }
 
     limpiarForm();
@@ -91,6 +99,7 @@ function limpiarForm () {
 
 function eliminarProductos() {
     localStorage.removeItem("productos");
+    localStorage.removeItem("id");
 }
 
 function mostrarProductos() {
@@ -118,12 +127,14 @@ function mostrarProductos() {
     }
 }
 
-function eliminarProducto(marco) {
-	// console.log(e.path[2].cells[0].childNodes[0].data);
+function eliminarProducto(id) {
+    let productosExistentes = JSON.parse(localStorage.getItem("productos"));
 
-    console.log(marco);
+    let filtrado = productosExistentes.filter(producto => producto.id != id);
 
-    // productos.splice(id, 1);
+    localStorage.setItem('productos',JSON.stringify(filtrado));
+
+    mostrarProductos();
 }
 
 mostrarProductos();
