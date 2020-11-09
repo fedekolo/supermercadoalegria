@@ -119,22 +119,34 @@ function mostrarProductos() {
         productosExistentes.forEach(product => {
             table.insertAdjacentHTML('beforeend', `<tr>
                 <td>${product.nombre}</td>
-                <td><span class="badge ${(product.cantidad > 0) ? 'badge-danger' : 'badge-dark'}">${product.cantidad}</span></td>
+                <td>${product.cantidad}</td>
                 <td>${product.precio}</td>
-                <td><button class="btn btn-danger" onclick="eliminarProducto(${product.id})">Delete</btn></td>
+                <td><button class="btn btn-danger" onclick="eliminarProducto(${product.id})">Borrar</btn></td>
             </tr>`);
         });
     }
 }
 
 function eliminarProducto(id) {
-    let productosExistentes = JSON.parse(localStorage.getItem("productos"));
-
-    let filtrado = productosExistentes.filter(producto => producto.id != id);
-
-    localStorage.setItem('productos',JSON.stringify(filtrado));
-
-    mostrarProductos();
+    Swal.fire({
+        title: 'Desea eliminar el producto?',
+        showDenyButton: true,
+        confirmButtonText: `Aceptar`,
+        denyButtonText: `Cancelar`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                text: 'Producto eliminado!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            let productosExistentes = JSON.parse(localStorage.getItem("productos"));
+            let filtrado = productosExistentes.filter(producto => producto.id != id);
+            localStorage.setItem('productos',JSON.stringify(filtrado));
+            mostrarProductos();
+        }
+    })
 }
 
 mostrarProductos();
