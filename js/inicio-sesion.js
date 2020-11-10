@@ -20,7 +20,8 @@ function inicioSesion(e) {
             const verificacionUsuario = JSON.parse(localStorage.getItem("contenedorUsuarios"))[index].usuario;
             if (verificacionUsuario===usuario) {
                 if (JSON.parse(localStorage.getItem("contenedorUsuarios"))[index].contraseña===contraseña) {
-                location.href ="cargar-productos.html";
+                    usuarioLogueado(usuario);
+                    location.href ="cargar-productos.html";
                 } else {
                     error.textContent = "La contraseña ingreada es erronea";
                 }
@@ -30,6 +31,10 @@ function inicioSesion(e) {
         }
     } 
 
+}
+
+function usuarioLogueado(usuario) {
+    localStorage.setItem("usuarioLogueado",usuario);
 }
 
 // boton que ejecuta el registro

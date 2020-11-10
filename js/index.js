@@ -33,7 +33,7 @@
 
 // desde aca
 
-function fede() {
+function confirmacion() {
     Swal.fire({
         icon: 'success',
         text: 'Producto guardado!',
@@ -75,26 +75,48 @@ function guardarProducto(e) {
     let productosExistentes = JSON.parse(localStorage.getItem("productos"));
 
     // productos = [{},{}]
+    
 
-    if(productosExistentes !== null) {
-        productosExistentes.push(producto);
-        localStorage.setItem('productos',JSON.stringify(productosExistentes));
-        fede();
+
+    // obtengo el cartel de error
+    let errorModal = document.querySelector("#error-modal");
+    let btnModal = document.querySelector("#guardar");
+    btnModal.removeAttribute("data-dismiss");
+
+    // validacion de productos ingresados
+    if (nombre==="") {
+        errorModal.textContent = "Por favor, ingrese un nombre de producto";
+    } else if (cantidad==="") {
+        errorModal.textContent = "Por favor, ingrese la cantidad del producto";
+    } else if (precio==="") {
+        errorModal.textContent = "Por favor, ingrese el precio del producto";
     } else {
-        productos.push(producto);
-        // [{}]
-        localStorage.setItem('productos',JSON.stringify(productos));
-        fede();
+
+        // si se validan todos los datos, ingresa el nuevo producto
+        if(productosExistentes !== null) {
+            productosExistentes.push(producto);
+            localStorage.setItem('productos',JSON.stringify(productosExistentes));
+            confirmacion();
+        } else {
+            productos.push(producto);
+            // [{}]
+            localStorage.setItem('productos',JSON.stringify(productos));
+            confirmacion();
+        }
+        limpiarForm();
+        btnModal.setAttribute("data-dismiss","modal");
+        mostrarProductos();
+        
     }
 
-    limpiarForm();
-    mostrarProductos();
+
 }
 
-function limpiarForm () {
+function limpiarForm() {
     document.querySelector('#nombre').value = '';
     document.querySelector('#cantidad').value = '';
     document.querySelector('#precio').value = '';
+    document.querySelector('#error-modal').textContent = '';
 }
 
 function eliminarProductos() {
@@ -147,6 +169,10 @@ function eliminarProducto(id) {
             mostrarProductos();
         }
     })
+}
+
+function exit() {
+    localStorage.removeItem("usuarioLogueado");
 }
 
 mostrarProductos();
