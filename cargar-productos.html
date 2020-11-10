@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Cargar productos</title>
+    <title>Supermercado Alegria - Productos</title>
+    <script src="js/validacion.js"></script>
 </head>
 <body>
     <!-- prueba -->
@@ -15,7 +16,7 @@
             <img class="logo" src="imagenes/logo.png" alt="logo">
             <ul class="nav-bar-items">
                 <li><a href="" data-toggle="modal" data-target="#exampleModal">Cargar productos</a></li>
-                <li><a href="">Productos</a></li>
+                <li><a href="index.html" onclick="exit()">Cerrar Sesión</a></li>
             </ul>
         </nav>
         <h1 class="titulo-pag">Supermercado alegria</h1>
@@ -47,7 +48,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Agregar productos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarForm()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -62,10 +63,11 @@
                         <label for="Precio">Precio:</label><br>
                         <input type="number" id="precio" name="precio" placeholder="$"><br>
                     </form>
+                    <span id="error-modal"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" onclick="guardarProducto(event)" data-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-success" onclick="guardarProducto(event)" id="guardar">Guardar</button>
                 </div>
             </div>
         </div>
@@ -83,5 +85,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
+
 </body>
 </html>
