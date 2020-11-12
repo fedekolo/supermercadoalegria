@@ -59,6 +59,14 @@ header {
         overflow-y: hidden;
     }
 
+    .titulo-pag2 {
+        color: var(--color-secondary);
+    }
+
+    .subtitulo-pag2 {
+        color: var(--color-secondary);
+    }
+
 /* INICIO SESION */
 section {
     width: 100%;

@@ -132,13 +132,14 @@ input :focus {
 /* TABLET HORIZONTAL */
 @media (min-width:815px) and (max-width:1111px) {
     .nav-bar-items {
-        width: 35%;
+        width: 38%;
+        
     }    
 }
 
 @media (min-width:633px) and (max-width:815px) {
     .nav-bar-items {
-        width: 38%;
+        width: 39%;
         font-size: 1.8rem;
     }
     
